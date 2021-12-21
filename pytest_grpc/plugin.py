@@ -44,6 +44,7 @@ class FakeRpcError(RuntimeError, grpc.RpcError):
 class FakeContext(object):
     def __init__(self):
         self._code = 0
+        self._details = ''
         self._invocation_metadata = []
 
     def abort(self, code, details):
@@ -51,6 +52,9 @@ class FakeContext(object):
 
     def set_code(self, code):
         self._code = code
+
+    def set_details(self, details):
+        self._details = details
 
     def invocation_metadata(self):
         return self._invocation_metadata

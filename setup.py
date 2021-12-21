@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 setup(
     name="pytest-grpc",
     license="MIT",
-    version='0.8.1',
+    version='0.8.2',
     author="Denis Kataev",
     author_email="denis.a.kataev@gmail.com",
     url="https://github.com/kataev/pytest-grpc",
