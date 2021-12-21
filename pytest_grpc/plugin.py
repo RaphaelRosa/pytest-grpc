@@ -1,8 +1,7 @@
-import socket
-from concurrent import futures
-
 import grpc
 import pytest
+import socket
+from concurrent import futures
 from grpc._cython.cygrpc import CompositeChannelCredentials, _Metadatum
 
 
@@ -44,10 +43,14 @@ class FakeRpcError(RuntimeError, grpc.RpcError):
 
 class FakeContext(object):
     def __init__(self):
+        self._code = 0
         self._invocation_metadata = []
 
     def abort(self, code, details):
         raise FakeRpcError(code, details)
+
+    def set_code(self, code):
+        self._code = code
 
     def invocation_metadata(self):
         return self._invocation_metadata
